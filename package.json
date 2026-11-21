@@ -1,0 +1,11 @@
+{
+  "name": "birthday-appreciation-website",
+  "version": "1.0.0",
+  "description": "A romantic, elegant, editorial birthday appreciation website.",
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "keywords": ["birthday", "appreciation", "romantic", "editorial", "website"],
+  "author": "",
+  "license": "MIT"
+}

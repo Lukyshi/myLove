@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday, My Love | The Only Exception</title>
+  
+  <!-- Favicon Heart (Clean Vector SVG) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23D96D94'><path d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/></svg>">
+
+  <!-- Google Fonts: Editorial Serif, Sans-Serif & Romantic Script -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Canvas Confetti Library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+  <!-- YouTube IFrame Player API -->
+  <script src="https://www.youtube.com/iframe_api"></script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Ambient Romantic Particle Background Canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Shower of Kisses & Hearts Overlay -->
+  <div id="kiss-shower-overlay"></div>
+
+  <!-- Dreamy Ambient Glow Orbs -->
+  <div class="bg-glow-orb bg-glow-orb-1"></div>
+  <div class="bg-glow-orb bg-glow-orb-2"></div>
+  <div class="bg-glow-orb bg-glow-orb-3"></div>
+
+  <!-- ==========================================================================
+       Header & Floating Navigation Bar
+       ========================================================================== -->
+  <header class="site-header">
+    <nav class="nav-container">
+      <a href="#hero" class="brand-monogram">
+        <span class="brand-initials">K &amp; L</span>
+        <svg class="brand-heart-svg" viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+        <span class="brand-tag">Birthday Edition</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#hero" class="nav-link active">Home</a></li>
+        <li><a href="#appreciation" class="nav-link">Things I Love</a></li>
+        <li><a href="#reminder" class="nav-link">Reminder</a></li>
+        <li><a href="#memories" class="nav-link">Our Story</a></li>
+        <li><a href="#photobooth" class="nav-link">Photobooth</a></li>
+        <li><a href="#letter" class="nav-link">Letter</a></li>
+        <li><a href="#wish" class="nav-link">Make a Wish</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <!-- Reference Duotone Pink Filter Toggle -->
+        <button id="filter-toggle" class="filter-toggle-btn" title="Toggle reference duotone pink photo filter">
+          <svg class="icon-svg" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/>
+            <circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/>
+            <circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/>
+            <circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/>
+            <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/>
+          </svg>
+          <span class="filter-btn-text" id="filter-status-label">Pink Filter: OFF</span>
+        </button>
+
+        <!-- Ambient Romantic Music Toggle: The Only Exception by Paramore -->
+        <button id="music-toggle" class="music-toggle-btn paused" title="Play or pause our theme song: The Only Exception by Paramore" aria-label="Play or pause theme song">
+          <span class="music-icon-disc" id="music-disc-icon">
+            <svg class="icon-svg disc-svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+          </span>
+          <span class="music-equalizer" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </span>
+          <span class="music-btn-text" id="music-label">The Only Exception</span>
+        </button>
+
+        <!-- Mobile Hamburger Menu Button -->
+        <button id="mobile-menu-toggle" class="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+          </span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Slide-Down Drawer Navigation -->
+    <div id="mobile-nav-drawer" class="mobile-nav-drawer" aria-hidden="true">
+      <ul class="mobile-nav-links">
+        <li><a href="#hero" class="mobile-nav-link active">Home</a></li>
+        <li><a href="#appreciation" class="mobile-nav-link">Things I Love</a></li>
+        <li><a href="#reminder" class="mobile-nav-link">A Little Reminder</a></li>
+        <li><a href="#memories" class="mobile-nav-link">Our Memories Together</a></li>
+        <li><a href="#photobooth" class="mobile-nav-link">Photobooth Strip</a></li>
+        <li><a href="#letter" class="mobile-nav-link">Letter for You</a></li>
+        <li><a href="#wish" class="mobile-nav-link">Make a Wish</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       1. Hero Section — A Birthday Just for You
+       ========================================================================== -->
+  <section id="hero" class="hero-section">
+    <div class="container">
+      <div class="hero-grid-refined">
+        
+        <!-- Left: Birthday Greeting, Intro, Song Pill, CTA & Subtle Romantic Quote -->
+        <div class="hero-col-left reveal-on-scroll">
+          <span class="hero-subtitle-top" id="hero-tag">A SPECIAL CELEBRATION &bull; TODAY IS ALL ABOUT YOU</span>
+          <h1 class="hero-heading" id="hero-heading">
+            Happy Birthday, to the Light of My Life
+          </h1>
+          <p class="hero-description" id="hero-intro">
+            Every day with you is a gift, but today is the most special of all. In a world where love can feel fragile and uncertain, you became the only exception I would choose a million times over.
+          </p>
+
+          <!-- Miniature Romantic Music Player: "The Only Exception" by Paramore -->
+          <div class="romantic-music-card" id="hero-music-player" aria-label="Music player for The Only Exception by Paramore">
+            <!-- Left: Rotating Vinyl Album Artwork -->
+            <div class="music-card-art-container" id="music-card-art-wrap" title="Paramore - The Only Exception (Click to play/pause)">
+              <div class="vinyl-disc" id="music-vinyl-disc">
+                <img src="assets/images/paramore-the-only-exception.jpg" alt="Paramore - The Only Exception Single Cover" class="album-artwork-img">
+                <div class="vinyl-spindle-hole"></div>
+              </div>
+              <span class="music-floating-note" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+              </span>
+            </div>
+
+            <!-- Middle: Song Details & Status Indicator -->
+            <div class="music-card-meta">
+              <div class="music-card-top-badge">
+                <svg class="icon-svg" viewBox="0 0 24 24" width="10" height="10" fill="currentColor">
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+                <span>OUR THEME SONG</span>
+              </div>
+              <h4 class="music-card-title">The Only Exception</h4>
+              <p class="music-card-artist">
+                <span>Paramore</span>
+                <span class="music-meta-bullet">&bull;</span>
+                <span class="music-album-tag">Brand New Eyes</span>
+              </p>
+              <div class="music-card-status" id="music-card-status">
+                <span class="status-pulse-dot" id="music-status-dot"></span>
+                <span class="status-state-text" id="music-status-text">Click to listen together</span>
+              </div>
+            </div>
+
+            <!-- Right: Play/Pause Button & Animated Equalizer -->
+            <div class="music-card-actions">
+              <button type="button" class="romantic-play-btn" id="hero-music-start" aria-label="Play or pause The Only Exception by Paramore">
+                <!-- Play Triangle -->
+                <svg class="play-icon-svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                  <polygon points="6 4 20 12 6 20 6 4"></polygon>
+                </svg>
+                <!-- Pause Bars -->
+                <svg class="pause-icon-svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                  <rect x="6" y="4" width="4" height="16" rx="1.5"></rect>
+                  <rect x="14" y="4" width="4" height="16" rx="1.5"></rect>
+                </svg>
+              </button>
+
+              <div class="player-equalizer-bars" id="music-equalizer-bars" aria-hidden="true" title="Audio Equalizer">
+                <span class="eq-bar eq-bar-1"></span>
+                <span class="eq-bar eq-bar-2"></span>
+                <span class="eq-bar eq-bar-3"></span>
+                <span class="eq-bar eq-bar-4"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-cta-group">
+            <a href="#appreciation" class="pill-btn pill-btn-primary">
+              <span>Things I Love About You</span>
+              <span class="arrow-circle">
+                <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </span>
+            </a>
+            <a href="#photobooth" class="pill-btn pill-btn-glass">
+              <svg class="icon-svg" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect>
+                <line x1="7" y1="2" x2="7" y2="22"></line>
+                <line x1="17" y1="2" x2="17" y2="22"></line>
+              </svg>
+              <span>Our Photobooth Strip</span>
+            </a>
+          </div>
+
+          <!-- Subtle Romantic Lyric Line -->
+          <p class="hero-subtle-lyric">
+            &ldquo;I had sworn to myself that I was content with loneliness... but you are the only exception.&rdquo;
+            <cite>&mdash; Paramore, The Only Exception</cite>
+          </p>
+        </div>
+
+        <!-- Right: Her Prominent Portrait with Delicate Floral Accent -->
+        <div class="hero-col-right reveal-on-scroll stagger-1">
+          <div class="hero-portrait-stage">
+            <!-- Subtle Corner Floral Sprig Accent -->
+            <img class="hero-floral-accent" src="assets/images/rose-lily-accent.png" alt="" aria-hidden="true">
+
+            <div class="hero-portrait-frame duotone-pink" id="hero-card" title="Click to view full photo">
+              <img id="hero-portrait-img" src="assets/images/her-sunlit-glasses-portrait.jpg" alt="Her Sunlit Portrait">
+              <div class="hero-portrait-caption-pill">
+                <span id="hero-portrait-caption">The girl who became my only exception</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Horizontal Navigation / Filter Pills Bar
+       ========================================================================== -->
+  <section class="pills-nav-section">
+    <div class="container">
+      <div class="pills-bar-container">
+        <div class="pills-group-left" id="filter-pills-group">
+          <button class="filter-pill active" data-category="all">
+            <svg class="icon-svg" viewBox="0 0 24 24" width="13" height="13" fill="currentColor">
+              <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/>
+            </svg>
+            <span>All Reasons</span>
+          </button>
+          <button class="filter-pill" data-category="smile">
+            <svg class="icon-svg" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <span>Her Smile &amp; Radiance</span>
+          </button>
+          <button class="filter-pill" data-category="dates">
+            <svg class="icon-svg" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+            </svg>
+            <span>Sweet Dates &amp; Adventures</span>
+          </button>
+          <button class="filter-pill" data-category="moments">
+            <svg class="icon-svg" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+              <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+              <line x1="6" y1="1" x2="6" y2="4"></line>
+              <line x1="10" y1="1" x2="10" y2="4"></line>
+              <line x1="14" y1="1" x2="14" y2="4"></line>
+            </svg>
+            <span>Cozy Everyday Moments</span>
+          </button>
+        </div>
+        <button class="pill-see-all" id="btn-toggle-all-cards">
+          <span>See All (14)</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       2. Appreciation Section — Things I Love About You (14 Cards)
+       ========================================================================== -->
+  <section id="appreciation" class="appreciation-section">
+    <div class="container">
+      
+      <!-- Delicate Floral Accent Divider -->
+      <div class="section-floral-divider reveal-on-scroll">
+        <span class="floral-divider-stem"></span>
+        <span class="floral-divider-emblem">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="var(--color-deep-rose)"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+        </span>
+        <span class="floral-divider-stem"></span>
+      </div>
+
+      <!-- Primary Asymmetric 3-Card Row (Exact layout from reference) -->
+      <div class="cards-asymmetric-grid" id="appreciation-primary-grid">
+        
+        <!-- Card 1: Wide Featured Card (White Lace Top) -->
+        <article class="appreciation-card card-wide duotone-pink reveal-on-scroll" data-id="reason-1" data-category="smile">
+          <img class="card-bg-img" src="assets/images/her-portrait-white-lace.jpg" alt="The Radiance of Your Smile">
+          <div class="card-gradient-overlay"></div>
+          <div class="card-content">
+            <span class="card-number-badge">Reason #01</span>
+            <h3 class="card-title">The Radiance of Your Smile</h3>
+            <p class="card-description">No matter how heavy the world feels, one gentle glance at you glowing in that gorgeous white outfit instantly puts my heart at peace.</p>
+            <div class="card-action-bar">
+              <span class="card-pill-btn">
+                <span>Read note</span>
+                <span class="card-pill-btn-icon">
+                  <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                </span>
+              </span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 2: Look Back Glance at Dinner -->
+        <article class="appreciation-card duotone-pink reveal-on-scroll stagger-1" data-id="reason-2" data-category="smile">
+          <img class="card-bg-img" src="assets/images/her-restaurant-lookback.jpg" alt="The Way You Look Back at Me">
+          <div class="card-gradient-overlay"></div>
+          <div class="card-content">
+            <span class="card-number-badge">Reason #02</span>
+            <h3 class="card-title">The Way You Look Back at Me</h3>
+            <p class="card-description">Turning your shoulder at dinner, catching my eye with that soft, captivating glance that makes my heart skip a beat.</p>
+            <div class="card-action-bar">
+              <span class="card-pill-btn">
+                <span>Read note</span>
+                <span class="card-pill-btn-icon">
+                  <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                </span>
+              </span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 3: Tanghulu Neon Sign Date -->
+        <article class="appreciation-card duotone-pink reveal-on-scroll stagger-2" data-id="reason-3" data-category="dates">
+          <img class="card-bg-img" src="assets/images/her-neon-tanghulu-peace.jpg" alt="Sweet Treats & Spontaneous Dates">
+          <div class="card-gradient-overlay"></div>
+          <div class="card-content">
+            <span class="card-number-badge">Reason #03</span>
+            <h3 class="card-title">Sweet Treats &amp; Spontaneous Dates</h3>
+            <p class="card-description">Spontaneous stops for strawberry tanghulu, smiling under bright neon signs, and making sweet memories together.</p>
+            <div class="card-action-bar">
+              <span class="card-pill-btn">
+                <span>Read note</span>
+                <span class="card-pill-btn-icon">
+                  <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                </span>
+              </span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Secondary 6-Card Grid -->
+      <div class="cards-secondary-grid" id="appreciation-secondary-grid">
+        
+        <!-- Card 4: Hot Wheels Aisle Candid -->
+        <article class="appreciation-card duotone-pink" data-id="reason-4" data-category="moments">
+          <img class="card-bg-img" src="assets/images/her-candid-hotwheels.jpg" alt="Your Endearing Curiosity">
+          <div class="card-gradient-overlay"></div>
+          <div class="card-content">
+            <span class="card-number-badge">Reason #04</span>
+            <h3 class="card-title">Your Endearing Curiosity</h3>
+            <p class="card-description">How you get so fascinated by little things—like browsing the toy car aisle—with that cute, focused look on your face.</p>
+            <div class="card-action-bar">
+              <span class="card-pill-btn">
+                <span>Read note</span>
+                <span class="card-pill-btn-icon">
+                  <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                </span>
+              </span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 5: Furniture Store Dreaming -->
+        <article class="appreciation-card duotone-pink" data-id="reason-5" data-category="dates">
+          <img class="card-bg-img" src="assets/images/her-store-profile-poised.jpg" alt="Dreaming of Our Future">
+          <div class="card-gradient-overlay"></div>
+          <div class="card-content">
+            <span class="card-number-badge">Reason #05</span>
+            <h3 class="card-title">Dreaming of Our Future</h3>
+            <p class="card-description">Walking through home stores, looking at cozy furniture, and quietly imagining the warm home we'll build one day.</p>
+            <div class="card-action-bar">
+              <span class="card-pill-btn">
+                <span>Read note</span>
+                <span class="card-pill-btn-icon">
+                  <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                </span>
+              </span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 6: Cafe Chin-on-Hand Candid -->
+        <article class="appreciation-card duotone-pink" data-id="reason-6" data-category="moments">
+          <img class="card-bg-img" src="assets/images/her-candid-cafe.jpg" alt="Our Quiet Cafe Dates">
+          <div class="card-gradient-overlay"></div>
+          <div class="card-content">
+            <span class="card-number-badge">Reason #06</span>
+            <h3 class="card-title">Our Quiet Cafe Dates</h3>
+            <p class="card-description">Resting your chin on your hand, sharing sweet whispers, and losing track of time in cozy corners together.</p>
+            <div class="card-action-bar">
+              <span class="card-pill-btn">
+                <span>Read note</span>
+                <span class="card-pill-btn-icon">
+                  <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                </span>
+              </span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 7: Transit Candid Glasses Pout -->
+        <article class="appreciation-card duotone-pink" data-id="reason-7" data-category="moments">
+          <img class="card-bg-img" src="assets/images/her-candid-glasses-bus.jpg" alt="Cute Everyday Pouts">
+          <div class="card-gradient-overlay"></div>
+          <div class="card-content">
+            <span class="card-number-badge">Reason #07</span>
+            <h3 class="card-title">Your Cute Everyday Pouts</h3>
+            <p class="card-description">Those adorable candid expressions you make on busy transit rides that always make me want to reach over and hold your hand.</p>
+            <div class="card-action-bar">
+              <span class="card-pill-btn">
+                <span>Read note</span>
+                <span class="card-pill-btn-icon">
+                  <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                </span>
+              </span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 8: Glam Blonde Wavy Hair -->
+        <article class="appreciation-card duotone-pink" data-id="reason-8" data-category="smile">
+          <img class="card-bg-img" src="assets/images/her-glam-blonde-portrait.jpg" alt="Your Breathtaking Elegance">
+          <div class="card-gradient-overlay"></div>
+          <div class="card-content">
+            <span class="card-number-badge">Reason #08</span>
+            <h3 class="card-title">Your Breathtaking Elegance</h3>
+            <p class="card-description">The undeniable grace, beauty, and confidence you carry effortlessly in every single look.</p>
+            <div class="card-action-bar">
+              <span class="card-pill-btn">
+                <span>Read note</span>
+                <span class="card-pill-btn-icon">
+                  <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                </span>
+              </span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 9: Dark Hair Playful Sign -->
+        <article class="appreciation-card duotone-pink" data-id="reason-9" data-category="smile">
+          <img class="card-bg-img" src="assets/images/her-dark-hair-playful.jpg" alt="Your Playful & Feisty Spirit">
+          <div class="card-gradient-overlay"></div>
+          <div class="card-content">
+            <span class="card-number-badge">Reason #09</span>
+            <h3 class="card-title">Your Playful &amp; Feisty Spirit</h3>
+            <p class="card-description">The energetic, silly, and vibrant spark that keeps our relationship exciting and full of laughter.</p>
+            <div class="card-action-bar">
+              <span class="card-pill-btn">
+                <span>Read note</span>
+                <span class="card-pill-btn-icon">
+                  <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                </span>
+              </span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 10: BulSU Uniform Smile -->
+        <article class="appreciation-card duotone-pink" data-id="reason-10" data-category="smile">
+          <img class="card-bg-img" src="assets/images/her-bulsu-uniform-smile.jpg" alt="Your Dedication & Bright Ambition">
+          <div class="card-gradient-overlay"></div>
+          <div class="card-content">
+            <span class="card-number-badge">Reason #10</span>
+            <h3 class="card-title">Your Dedication &amp; Bright Ambition</h3>
+            <p class="card-description">Seeing you in your BulSU uniform, studying hard and pursuing your goals with that sweet, radiant smile.</p>
+            <div class="card-action-bar">
+              <span class="card-pill-btn">
+                <span>Read note</span>
+                <span class="card-pill-btn-icon">
+                  <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                </span>
+              </span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 11: Beanie Close-up Smile -->
+        <article class="appreciation-card duotone-pink" data-id="reason-11" data-category="smile">
+          <img class="card-bg-img" src="assets/images/her-beanie-close-smile.jpg" alt="The Cutest Smile in the Room">
+          <div class="card-gradient-overlay"></div>
+          <div class="card-content">
+            <span class="card-number-badge">Reason #11</span>
+            <h3 class="card-title">The Cutest Smile in the Room</h3>
+            <p class="card-description">Looking up in your black beanie with both hands, giving me that sweet smile that melts my heart in a second.</p>
+            <div class="card-action-bar">
+              <span class="card-pill-btn">
+                <span>Read note</span>
+                <span class="card-pill-btn-icon">
+                  <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                </span>
+              </span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 12: Sunny Campus Portrait -->
+        <article class="appreciation-card duotone-pink" data-id="reason-12" data-category="moments">
+          <img class="card-bg-img" src="assets/images/her-sunny-campus-portrait.jpg" alt="Sunlit Afternoons With You">
+          <div class="card-gradient-overlay"></div>
+          <div class="card-content">
+            <span class="card-number-badge">Reason #12</span>
+            <h3 class="card-title">Sunlit Afternoons With You</h3>
+            <p class="card-description">Resting your chin in your hand under the golden afternoon sun, looking so serene and breathtaking.</p>
+            <div class="card-action-bar">
+              <span class="card-pill-btn">
+                <span>Read note</span>
+                <span class="card-pill-btn-icon">
+                  <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                </span>
+              </span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 13: Quiet Night Car Ride -->
+        <article class="appreciation-card duotone-pink" data-id="reason-13" data-category="moments">
+          <img class="card-bg-img" src="assets/images/her-car-night-dreamy.jpg" alt="Safe Rides Home in the Quiet Night">
+          <div class="card-gradient-overlay"></div>
+          <div class="card-content">
+            <span class="card-number-badge">Reason #13</span>
+            <h3 class="card-title">Safe Rides Home in the Quiet Night</h3>
+            <p class="card-description">Sharing wired earphones in the car, watching city lights pass by, knowing I'm right where I'm meant to be.</p>
+            <div class="card-action-bar">
+              <span class="card-pill-btn">
+                <span>Read note</span>
+                <span class="card-pill-btn-icon">
+                  <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                </span>
+              </span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 14: Night Market Walk (Card Wide) -->
+        <article class="appreciation-card card-wide duotone-pink" data-id="reason-14" data-category="dates">
+          <img class="card-bg-img" src="assets/images/her-night-market-full.jpg" alt="Late-Night Strolls & Street Market Food">
+          <div class="card-gradient-overlay"></div>
+          <div class="card-content">
+            <span class="card-number-badge">Reason #14</span>
+            <h3 class="card-title">Late-Night Strolls &amp; Street Market Food</h3>
+            <p class="card-description">Walking under warm fairy lights, browsing street stalls, and sharing little snacks with you under the stars.</p>
+            <div class="card-action-bar">
+              <span class="card-pill-btn">
+                <span>Read note</span>
+                <span class="card-pill-btn-icon">
+                  <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                </span>
+              </span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       3. A Little Reminder — You Are Special
+       ========================================================================== -->
+  <section id="reminder" class="reminder-section">
+    <div class="container">
+      <div class="reminder-grid-layout">
+        
+        <div class="reminder-text-col reveal-on-scroll">
+          <div class="reminder-flourish reminder-flourish-left">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          </div>
+
+          <span class="reminder-script-tag" id="reminder-accent">A gentle reminder for your heart</span>
+          
+          <h2 class="reminder-heading" id="reminder-heading">
+            No Matter How Many Candles on Your Cake, You Shine the Brightest
+          </h2>
+
+          <p class="reminder-body" id="reminder-body">
+            If you ever doubt how deeply appreciated and adored you are, remember that to me, you are irreplaceable. In a world where love can feel like too great a risk, loving you became the easiest and truest thing I have ever done.
+          </p>
+
+          <div class="reminder-quote-callout">
+            “I had sworn to myself that I was content with loneliness... but you are the only exception.”
+          </div>
+        </div>
+
+        <div class="reminder-polaroid-col reveal-on-scroll stagger-1">
+          <div class="polaroid-stack">
+            <!-- Back Tilted Polaroid: Cute Everyday Pout -->
+            <div class="polaroid-frame polaroid-back duotone-pink" id="polaroid-cameo-back" title="Click to view full photo" data-photo="assets/images/her-nha-pout-glasses.jpg" data-caption="Even your cute everyday pouts are pure poetry to me">
+              <div class="polaroid-img-wrap">
+                <img src="assets/images/her-nha-pout-glasses.jpg" alt="Cute Everyday Pout with Glasses">
+              </div>
+              <div class="polaroid-caption">Even your pouts are poetry</div>
+            </div>
+
+            <!-- Front Polaroid: Radiant Direct Smile -->
+            <div class="polaroid-frame polaroid-front duotone-pink" id="polaroid-cameo" title="Click to view full photo" data-photo="assets/images/her-nha-sweet-smile.jpg" data-caption="The radiant smile that lights up my entire world • My Only Exception">
+              <div class="polaroid-img-wrap">
+                <img src="assets/images/her-nha-sweet-smile.jpg" alt="Her Radiant Smile with Glasses">
+              </div>
+              <div class="polaroid-caption">My radiant only exception</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       4. Our Memories Together — Overlapping Photo Collage
+       ========================================================================== -->
+  <section id="memories" class="memories-section">
+    <div class="container">
+      <div class="memories-grid">
+        
+        <div class="collage-container reveal-on-scroll" id="collage-container">
+          <!-- Romantic Corner Floral Accent -->
+          <img class="collage-floral-accent" src="assets/images/rose-lily-accent.png" alt="" aria-hidden="true">
+          
+          <!-- Collage Card 1: Outdoor Sunny Walk -->
+          <div class="collage-card collage-card-1 duotone-pink" data-memory="0" title="Click to view memory">
+            <span class="collage-badge">
+              <svg class="icon-svg" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                <circle cx="12" cy="13" r="4"></circle>
+              </svg>
+              <span id="mem-badge-0">Everyday Best Friends</span>
+            </span>
+            <img class="collage-img" id="mem-img-0" src="assets/images/couple-outdoor-walk.jpg" alt="Sunny Walk Together">
+          </div>
+
+          <!-- Collage Card 2: Affectionate Close-up -->
+          <div class="collage-card collage-card-2 duotone-pink" data-memory="1" title="Click to view memory">
+            <span class="collage-badge">
+              <span style="display: inline-flex; gap: 2px;">
+                <svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                <svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                <svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                <svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                <svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              </span>
+              <span id="mem-badge-1">10/10 In Love</span>
+            </span>
+            <img class="collage-img" id="mem-img-1" src="assets/images/couple-sweet-close-up.jpg" alt="Where My Heart Belongs">
+          </div>
+
+          <!-- Collage Card 3: Flash Mirror Selfie -->
+          <div class="collage-card collage-card-3 duotone-pink" data-memory="2" title="Click to view memory">
+            <span class="collage-badge">
+              <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+              </svg>
+              <span id="mem-badge-2">Forever Favorite</span>
+            </span>
+            <img class="collage-img" id="mem-img-2" src="assets/images/couple-flash-mirror.jpg" alt="Flash Mirror Candids">
+          </div>
+
+          <div class="floating-heart-bubble" title="With all my heart">
+            <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          </div>
+
+        </div>
+
+        <div class="memories-content reveal-on-scroll stagger-1">
+          <span class="section-tag" id="memories-tag">CHAPTERS OF OUR STORY</span>
+          <h2 class="memories-heading" id="memories-heading">Every Single Moment With You is a Keepsake</h2>
+          <p class="memories-text" id="memories-story">
+            From the very first day we began talking to every spontaneous adventure since, my favorite memories all have one thing in common: you are in them. Here are just a few little glimpses of our journey so far.
+          </p>
+
+          <div class="memory-milestones">
+            <div class="memory-milestone-item">
+              <div class="milestone-icon">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="var(--color-deep-rose)">
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+              </div>
+              <div class="milestone-text">
+                <h4 id="milestone-1-title">Chapter 01: The Beginning</h4>
+                <p id="milestone-1-desc">When a simple conversation turned into butterflies I never wanted to lose.</p>
+              </div>
+            </div>
+
+            <div class="memory-milestone-item">
+              <div class="milestone-icon">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--color-deep-rose)" stroke-width="2">
+                  <circle cx="12" cy="12" r="5"></circle>
+                  <line x1="12" y1="1" x2="12" y2="3"></line>
+                  <line x1="12" y1="21" x2="12" y2="23"></line>
+                  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                  <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                  <line x1="1" y1="12" x2="3" y2="12"></line>
+                  <line x1="21" y1="12" x2="23" y2="12"></line>
+                </svg>
+              </div>
+              <div class="milestone-text">
+                <h4 id="milestone-2-title">Golden Hour Adventures</h4>
+                <p id="milestone-2-desc">Chasing sunsets together and realizing that any place with you is home.</p>
+              </div>
+            </div>
+
+            <div class="memory-milestone-item">
+              <div class="milestone-icon">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="var(--color-deep-rose)">
+                  <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/>
+                </svg>
+              </div>
+              <div class="milestone-text">
+                <h4 id="milestone-3-title">The Best is Yet to Come</h4>
+                <p id="milestone-3-desc">Every year with you gets sweeter. Here is to making a thousand more.</p>
+              </div>
+            </div>
+          </div>
+
+          <a href="#photobooth" class="pill-btn pill-btn-primary">
+            <span>View Original Photobooth Strip</span>
+            <span class="arrow-circle">
+              <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       ORIGINAL PHOTOBOOTH & PLAYFUL KEEPSAKES
+       ========================================================================== -->
+  <section id="photobooth" class="photobooth-section">
+    <div class="container">
+      
+      <div class="photobooth-header reveal-on-scroll">
+        <span class="section-tag">ORIGINAL PHOTOBOOTH ARCHIVE</span>
+        <h2 class="section-title">Our Original Photobooth Keepsakes</h2>
+        <p class="section-desc" style="margin: 0 auto;">
+          The authentic high-resolution digital strip from our unforgettable date, plus our favorite playful moments together.
+        </p>
+      </div>
+
+      <div class="photobooth-layout">
+        
+        <!-- Left: Original Digital Vertical Photoism Strip -->
+        <div class="original-strip-card reveal-on-scroll" id="card-original-strip" title="Click to view full high-resolution strip">
+          <span class="strip-card-badge">
+            <svg class="icon-svg" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect>
+              <line x1="7" y1="2" x2="7" y2="22"></line>
+              <line x1="17" y1="2" x2="17" y2="22"></line>
+            </svg>
+            <span>ORIGINAL DIGITAL SCAN &bull; PHOTOISM</span>
+          </span>
+          <div class="strip-img-viewport">
+            <img src="assets/images/original-photoism-strip.jpg" alt="Original Photoism Photobooth Strip">
+          </div>
+          <div class="strip-card-footer">
+            <h3>Our 4-Pose Wedding Strip</h3>
+            <p>Veil, bouquet, sweet hugs, and silly smiles preserved in high-res black and white.</p>
+          </div>
+        </div>
+
+        <!-- Right: 4 Companion Keepsake Cards (2x2 Grid) -->
+        <div class="keepsakes-grid-right reveal-on-scroll stagger-1">
+          
+          <!-- Card 1: Printed Strips in Hand -->
+          <div class="keepsake-card-item" data-photo="assets/images/couple-photostrips-photoism.jpg" data-caption="The Printed Keepsakes — Holding up our physical Photoism printouts!">
+            <div class="keepsake-img-box">
+              <img src="assets/images/couple-photostrips-photoism.jpg" alt="Holding Printed Strips">
+            </div>
+            <div class="keepsake-text-box">
+              <div>
+                <span class="keepsake-tag">TANGIBLE MEMORIES</span>
+                <h4 class="keepsake-title">The Printed Strips</h4>
+                <p class="keepsake-desc">Holding up our physical Photoism prints fresh out of the booth.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Playing Bride & Groom -->
+          <div class="keepsake-card-item" data-photo="assets/images/couple-photobooth-veil-flowers.jpg" data-caption="Playing Bride & Groom — My future bride in the pearl veil and me with the dino!">
+            <div class="keepsake-img-box">
+              <img src="assets/images/couple-photobooth-veil-flowers.jpg" alt="Bride and Groom Photobooth">
+            </div>
+            <div class="keepsake-text-box">
+              <div>
+                <span class="keepsake-tag">
+                  MY FUTURE BRIDE 
+                  <svg viewBox="0 0 24 24" width="10" height="10" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                </span>
+                <h4 class="keepsake-title">Playing Bride &amp; Groom</h4>
+                <p class="keepsake-desc">You in the bridal veil with pearls, me with the green dino and flowers.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Fish Headbands -->
+          <div class="keepsake-card-item" data-photo="assets/images/couple-fish-headbands.jpg" data-caption="Fish Headband Adventures — Matching plush yellow fish hats!">
+            <div class="keepsake-img-box">
+              <img src="assets/images/couple-fish-headbands.jpg" alt="Fish Headbands">
+            </div>
+            <div class="keepsake-text-box">
+              <div>
+                <span class="keepsake-tag">MATCHING SILLINESS</span>
+                <h4 class="keepsake-title">Fish Headband Adventures</h4>
+                <p class="keepsake-desc">Trying on plush yellow fish headbands and laughing at how silly we look.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4: Silly Tongues Diner -->
+          <div class="keepsake-card-item" data-photo="assets/images/couple-silly-tongues.jpg" data-caption="Never Too Serious, Always in Love — Silly diner candids!">
+            <div class="keepsake-img-box">
+              <img src="assets/images/couple-silly-tongues.jpg" alt="Silly Tongues">
+            </div>
+            <div class="keepsake-text-box">
+              <div>
+                <span class="keepsake-tag">AUTHENTIC &amp; REAL</span>
+                <h4 class="keepsake-title">Never Too Serious</h4>
+                <p class="keepsake-desc">Sticking our tongues out across the table—genuine and 100% us.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Playful & Candid Companion Gallery Row -->
+      <div class="keepsakes-gallery-row reveal-on-scroll">
+        
+        <!-- Keepsake 5: Campus Silliness Tongue Out -->
+        <div class="keepsake-card-item" data-photo="assets/images/her-bulsu-uniform-tongue.jpg" data-caption="Campus Silliness — Adorable tongue out in your BulSU uniform!">
+          <div class="keepsake-img-box">
+            <img src="assets/images/her-bulsu-uniform-tongue.jpg" alt="Campus Silliness in BulSU Uniform" style="object-position: center 20%;">
+          </div>
+          <div class="keepsake-text-box">
+            <div>
+              <span class="keepsake-tag">CAMPUS SILLINESS</span>
+              <h4 class="keepsake-title">Cute School Candids</h4>
+              <p class="keepsake-desc">Sticking your tongue out in your BulSU uniform—our silliness never stops.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Keepsake 6: Chic Beanie Date -->
+        <div class="keepsake-card-item" data-photo="assets/images/her-cafe-beanie-full.jpg" data-caption="Chic Beanie Date — Lounging at our favorite cafe corner!">
+          <div class="keepsake-img-box">
+            <img src="assets/images/her-cafe-beanie-full.jpg" alt="Chic Beanie Date in Cafe" style="object-position: center 22%;">
+          </div>
+          <div class="keepsake-text-box">
+            <div>
+              <span class="keepsake-tag">COZY CAFE CORNER</span>
+              <h4 class="keepsake-title">Chic Beanie Date</h4>
+              <p class="keepsake-desc">Lounging at the high table in your black beanie, looking effortlessly stylish.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Keepsake 7: Floral Bucket Hat -->
+        <div class="keepsake-card-item" data-photo="assets/images/her-floral-buckethat-night.jpg" data-caption="Floral Bucket Hat & Earphones — Sweet night strolls together!">
+          <div class="keepsake-img-box">
+            <img src="assets/images/her-floral-buckethat-night.jpg" alt="Floral Bucket Hat Night Candid" style="object-position: center 25%;">
+          </div>
+          <div class="keepsake-text-box">
+            <div>
+              <span class="keepsake-tag">NIGHT ADVENTURES</span>
+              <h4 class="keepsake-title">Bucket Hat &amp; Earphones</h4>
+              <p class="keepsake-desc">Sharing playlists through wired earphones while you rock your floral hat with that sweet pout.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Keepsake 8: Midnight Glow -->
+        <div class="keepsake-card-item" data-photo="assets/images/her-moody-night-glam.jpg" data-caption="Midnight Glow — Effortlessly stunning from every angle!">
+          <div class="keepsake-img-box">
+            <img src="assets/images/her-moody-night-glam.jpg" alt="Midnight Glow Portrait" style="object-position: center 25%;">
+          </div>
+          <div class="keepsake-text-box">
+            <div>
+              <span class="keepsake-tag">MIDNIGHT GLOW</span>
+              <h4 class="keepsake-title">Breathtaking in the Dark</h4>
+              <p class="keepsake-desc">Late-night flash portraits with soft eyeliner and dark hair—simply stunning.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       5. A Letter for You — Sealed Interactive Envelope & Stationery
+       ========================================================================== -->
+  <section id="letter" class="letter-section">
+    <div class="container">
+      
+      <!-- Section Editorial Header -->
+      <div class="section-header text-center reveal-on-scroll" style="margin-bottom: 36px;">
+        <span class="section-tag">A LETTER FOR YOU</span>
+        <h2 class="section-title">Written From the Bottom of My Heart</h2>
+        <p class="section-subtitle">A sealed keepsake made just for you on your special day.</p>
+      </div>
+
+      <!-- Sealed Envelope Interactive Stage with Real Floral Accent -->
+      <div class="envelope-stage reveal-on-scroll">
+        <img src="assets/images/rose-lily-accent.png" alt="Rose and Lily Floral Accent" class="letter-floral-accent" aria-hidden="true">
+        
+        <div class="envelope-box" id="envelope-box">
+
+          <!-- Sealed Envelope Exterior (Clickable) -->
+          <div class="envelope-shell" id="envelope-shell" role="button" tabindex="0" aria-label="Open birthday letter envelope" title="Click to break the wax seal and open your letter">
+            <!-- Postage Stamp -->
+            <div class="envelope-postage-stamp">
+              <svg class="icon-svg" viewBox="0 0 24 24" width="28" height="28" fill="var(--color-deep-rose)">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+              </svg>
+              <span class="stamp-postmark-text" id="stamp-postmark-text">SPECIAL<br>DELIVERY</span>
+            </div>
+
+            <!-- Circular Postmark Stamp -->
+            <div class="envelope-postmark-circle">
+              <span>BIRTHDAY</span>
+              <span>SPECIAL</span>
+              <span>PAR AVION</span>
+            </div>
+
+            <!-- Triangular Bottom Fold Accent -->
+            <div class="envelope-bottom-fold"></div>
+
+            <!-- Calligraphy Address Label -->
+            <div class="envelope-address-label">
+              <div class="envelope-recipient-script" id="envelope-recipient">For My Beloved Girlfriend</div>
+              <div class="envelope-delivery-note" id="envelope-delivery-note">Delivered with infinite love • On your birthday</div>
+            </div>
+
+            <!-- Triangular Top Flap with 3D Fold -->
+            <div class="envelope-top-flap" id="envelope-top-flap"></div>
+
+            <!-- Wax Seal Centered on Envelope -->
+            <div class="wax-seal-wrapper" id="wax-seal-opener" role="button" tabindex="0" aria-label="Break wax seal and open letter">
+              <div class="wax-seal" title="Break the seal to read">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+              </div>
+              <div class="seal-hint-badge">
+                <svg class="icon-svg" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                <span>Click to Open Letter</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Unfolded Letter Stationery (Revealed when envelope opens) -->
+          <div class="letter-stationery" id="letter-stationery">
+            
+            <div class="letter-opened-stamp-badge" id="wax-seal-badge" title="Embossed with love">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+              </svg>
+            </div>
+
+            <div class="letter-header">
+              <div class="letter-salutation" id="letter-salutation">To My Dearest Baby,</div>
+              <div class="letter-date-stamp" id="letter-date">November 21 • Your Birthday</div>
+            </div>
+
+            <!-- Authentic Letter Message -->
+            <div class="letter-body" id="letter-paragraphs">
+              <p>Happy birthday, baby, my love! Sorry, eto lang yung gift na kaya kong ibigay sa'yo. Hayaan mo, babawi ako sa'yo, promise.</p>
+              <p>I hope you enjoy your day, nababasa mo man 'to ngayon or tapos na birthday mo na, kasi ginagawa ko pa ngayon yung website eh. HWHAAHAHAHA! Sana na-enjoy mo 'tong araw na 'to. And I hope na kahit anong mangyari, wag kang susuko. Kahit feel mo araw-araw inaapi ka ng mundo, lagi mong tandaan na nandito lang ako palagi para sa'yo.</p>
+              <p>And I'm really thankful na dumating ka sa buhay ko. Hindi ko na alam kung anong gagawin ko kung hindi kita nakilala. Lagi mong tatandaan, baby, na nandito lang ako palagi para sa'yo. Mahal na mahal kita!</p>
+              <p>IDK what to say kasi parang lahat naman na nasabi ko na sa'yo. HWHHAHA! I LOVE YOUUU, BABY! My wifeyy, my best friend, and my enemyyy. LOVE YOUUUUU, BABYYY! Muahh, muahhhhh!</p>
+              <p style="font-weight: 700; color: var(--color-deep-rose); font-size: 1.35rem; display: flex; align-items: center; gap: 8px;">
+                HAPPY BIRTHDAY!
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+              </p>
+            </div>
+
+            <div class="letter-footer">
+              <div>
+                <div class="letter-signoff" id="letter-signoff">With all my love and devotion,</div>
+                <div class="letter-signature" id="letter-signature">Always Yours</div>
+              </div>
+            </div>
+
+            <div class="letter-action-row">
+              <button class="pill-btn pill-btn-rose" id="btn-copy-letter">
+                <svg class="icon-svg" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                <span>Copy Letter as Keepsake</span>
+              </button>
+              <button class="pill-btn pill-btn-glass" id="btn-reseal-letter" title="Seal the letter back inside the envelope">
+                <svg class="icon-svg" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                <span>Seal Letter Back</span>
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       6. Final Section — Interactive Birthday Cake Surprise & 3 Promises
+       ========================================================================== -->
+  <section id="wish" class="final-section">
+    <div class="container">
+      
+      <!-- Full-Width Rounded Banner with Grand Bouquet & Cake -->
+      <div class="final-banner">
+        <div class="banner-bg-hearts"></div>
+        <div class="banner-content">
+          <span class="banner-tag" id="final-tag">BEFORE YOUR SPECIAL DAY CONCLUDES</span>
+          <h2 class="banner-heading" id="final-heading">Make a Birthday Wish, Sweetheart</h2>
+          <p class="banner-subheading" id="final-subheading">
+            Close your eyes, think of something your heart desires most, and blow out the candles below.
+          </p>
+
+          <!-- The Final Centerpiece Bouquet: Red Roses & White Lilies -->
+          <div class="final-bouquet-hero reveal-on-scroll">
+            <div class="final-bouquet-glow-halo"></div>
+            <div class="final-bouquet-card">
+              <div class="final-bouquet-img-wrapper">
+                <img src="assets/images/rose-lily-bouquet.png" alt="A Gift of Red Roses and White Lilies" class="final-bouquet-image">
+              </div>
+              <div class="final-bouquet-details">
+                <span class="bouquet-gift-pill">
+                  <svg class="icon-svg" viewBox="0 0 24 24" width="13" height="13" fill="currentColor">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                  </svg>
+                  <span>A Floral Gift From My Heart</span>
+                </span>
+                <h3 class="bouquet-title">A Bouquet of Red Roses &amp; White Lilies</h3>
+                <p class="bouquet-subtext">
+                  Every red rose is a symbol of my unending love, and every white lily is a reminder of how pure and beautiful you are. Unlike ordinary flowers, baby, this bouquet will never wilt or fade&mdash;just like my promise to you.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Tiered Birthday Cake with 3 Striped Candles -->
+          <div class="cake-interactive-container reveal-on-scroll stagger-1">
+            <div class="cake-stage" id="cake-stage" title="Make a wish!">
+              <!-- Pedestal Stand Plate -->
+              <div class="cake-plate"></div>
+              
+              <!-- Bottom Tier (Pink Frosting & Hearts) -->
+              <div class="cake-tier-bottom"></div>
+              
+              <!-- Top Tier (Cream & Pearls) -->
+              <div class="cake-tier-top"></div>
+
+              <!-- 3 Glowing Birthday Candles -->
+              <div class="candles-group">
+                
+                <!-- Candle 1 (Left) -->
+                <div class="cake-candle-item cake-candle-1" id="candle-1">
+                  <div class="candle-wick-line"></div>
+                  <div class="candle-flame-element"></div>
+                  <div class="candle-smoke-puff"></div>
+                </div>
+
+                <!-- Candle 2 (Center, Taller) -->
+                <div class="cake-candle-item cake-candle-2" id="candle-2">
+                  <div class="candle-wick-line"></div>
+                  <div class="candle-flame-element"></div>
+                  <div class="candle-smoke-puff"></div>
+                </div>
+
+                <!-- Candle 3 (Right) -->
+                <div class="cake-candle-item cake-candle-3" id="candle-3">
+                  <div class="candle-wick-line"></div>
+                  <div class="candle-flame-element"></div>
+                  <div class="candle-smoke-puff"></div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Interaction Controls: Microphone + Click Option -->
+            <div class="cake-controls-box">
+              <div class="blow-buttons-row">
+                
+                <!-- Microphone Blow Button -->
+                <button class="mic-toggle-pill" id="btn-mic-blow">
+                  <span id="mic-icon">
+                    <svg class="icon-svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                      <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                      <line x1="12" y1="19" x2="12" y2="23"></line>
+                      <line x1="8" y1="23" x2="16" y2="23"></line>
+                    </svg>
+                  </span>
+                  <span id="mic-status-text">Blow with Microphone</span>
+                  <div class="mic-meter-track">
+                    <div id="mic-meter-bar" class="mic-meter-fill"></div>
+                  </div>
+                </button>
+
+                <!-- Click Alternative Button -->
+                <button class="pill-btn pill-btn-white" id="btn-click-blow">
+                  <svg class="icon-svg" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"></path>
+                  </svg>
+                  <span>Blow Out Candles (Click)</span>
+                  <span class="arrow-circle">
+                    <svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor"><path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/></svg>
+                  </span>
+                </button>
+
+              </div>
+
+              <!-- Live Instruction / Status -->
+              <div class="cake-instruction-text" id="cake-instruction">
+                Make a wish and blow out the candles!
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 3 Rounded Promise Cards Overlapping Underneath -->
+      <div class="banner-cards-row reveal-on-scroll stagger-2">
+        
+        <div class="promise-card">
+          <span class="promise-number" id="promise-1-num">01.</span>
+          <h3 class="promise-title" id="promise-1-title">Always Be Your Biggest Fan</h3>
+          <p class="promise-desc" id="promise-1-desc">
+            I promise to celebrate your wins, cheer you on through your doubts, and remind you of how extraordinary you are every day.
+          </p>
+        </div>
+
+        <div class="promise-card">
+          <span class="promise-number" id="promise-2-num">02.</span>
+          <h3 class="promise-title" id="promise-2-title">Listen with a Patient Heart</h3>
+          <p class="promise-desc" id="promise-2-desc">
+            I promise to always give you a safe place to speak your mind, be vulnerable, cry when you need to, and laugh without holding back.
+          </p>
+        </div>
+
+        <div class="promise-card">
+          <span class="promise-number" id="promise-3-num">03.</span>
+          <h3 class="promise-title" id="promise-3-title">Choose You, Every Single Day</h3>
+          <p class="promise-desc" id="promise-3-desc">
+            Through every season of life, through the sunny days and the stormy skies, my hand and heart remain faithfully yours.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Footer
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      
+      <div class="footer-nav">
+        <a href="#hero">
+          Back to Top 
+          <svg class="icon-svg" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="12" y1="19" x2="12" y2="5"></line>
+            <polyline points="5 12 12 5 19 12"></polyline>
+          </svg>
+        </a>
+        <a href="#appreciation">Things I Love</a>
+        <a href="#reminder">A Little Reminder</a>
+        <a href="#memories">Our Memories</a>
+        <a href="#photobooth">Photobooth</a>
+        <a href="#letter">Birthday Letter</a>
+        <a href="#wish">Make a Wish</a>
+      </div>
+
+      <div class="footer-love-badge">
+        <span>Handcrafted with all my love for your special day</span>
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+      </div>
+
+      <p class="footer-copy">
+        A Birthday Appreciation Experience • Designed with Love • <span id="current-year">2026</span>
+      </p>
+
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       Modals: Appreciation Modal, Lightbox Modal, Surprise Reveal Modal
+       ========================================================================== -->
+  <!-- Appreciation Detail Modal -->
+  <div class="modal-backdrop" id="modal-appreciation">
+    <div class="modal-dialog">
+      <button class="modal-close-btn" id="modal-close-appreciation" aria-label="Close">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <span class="modal-tag" id="modal-app-tag">REASON #01</span>
+      <h3 class="modal-title" id="modal-app-title">The Warmth of Your Smile</h3>
+      <div class="modal-body-text" id="modal-app-body">
+        Full note will appear here...
+      </div>
+      <button class="pill-btn pill-btn-primary" id="modal-app-ok">
+        <span>Keep Loving You</span>
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Memory Photo Lightbox Modal -->
+  <div class="modal-backdrop" id="modal-lightbox">
+    <div class="modal-dialog lightbox-dialog">
+      <button class="modal-close-btn" id="modal-close-lightbox" aria-label="Close">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <div class="lightbox-img-wrap">
+        <img id="lightbox-img" src="" alt="Enlarged Memory">
+      </div>
+      <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+  </div>
+
+  <!-- Birthday Cake Surprise Pop-up Modal (Shower of Kisses Reveal) -->
+  <div class="modal-backdrop" id="modal-wish-surprise">
+    <div class="surprise-modal-dialog">
+      <button class="modal-close-btn" id="modal-close-surprise" aria-label="Close">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <span class="surprise-kiss-badge">
+        <svg viewBox="0 0 64 64" width="46" height="46" fill="var(--color-deep-rose)">
+          <path d="M31.8 14.5c-5.2 0-9.8 2.2-13.6 5.8-3.4 3.2-6.5 7.4-8.2 11.8-.7 1.8.8 3.5 2.6 3.1 4.5-1 9.4-2.2 14.2-2.2 2.6 0 4.8.6 6.8 1.4 2-1 4.4-1.6 7-1.6 5.2 0 10.5 1.4 15.2 2.6 1.8.5 3.4-1.2 2.6-3-2-4.6-5.4-8.8-9-12-3.8-3.5-8.4-5.9-13.6-5.9zm-16.2 24c3.8 2.8 8.8 5 14.2 5 2.2 0 4.2-.4 6-1.1 1.8.8 4 1.3 6.4 1.3 5.4 0 10.8-2.4 14.8-5.2 1.5-1.1 3.5.2 3 2-2 7.2-7.8 12.5-14.8 14.8-5.8 1.9-12.4 1.7-18.2-.4-6.4-2.3-11.8-7.2-14-14.2-.5-1.8 1.3-3.2 2.6-2.2z"/>
+        </svg>
+      </span>
+      <h3 class="surprise-title" id="surprise-title">Happy Birthday, to My Only Exception</h3>
+      <p class="surprise-text" id="surprise-text">
+        Sending you a shower of a thousand sweet kisses! May every wish whispered in your heart today come true, my love!
+      </p>
+      <div class="surprise-actions-row">
+        <button class="pill-btn pill-btn-primary" id="btn-relight-candles">
+          <svg class="icon-svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+            <path d="M12 2c-.5 2-2 4-2 6 0 2.21 1.79 4 4 4s4-1.79 4-4c0-2-1.5-4-2-6-1 2-3 2-4 0z"/>
+          </svg>
+          <span>Relight &amp; Wish Again</span>
+        </button>
+        <a href="#letter" class="pill-btn pill-btn-rose" id="btn-surprise-read-letter">
+          <svg class="icon-svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+          <span>Read My Letter</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Unobtrusive Embedded YouTube Audio Player: "The Only Exception" by Paramore -->
+  <div id="yt-player-container" class="visually-unobtrusive-yt" aria-hidden="true">
+    <div id="youtube-audio-player"></div>
+  </div>
+
+  <!-- Audio Element Fallback: "The Only Exception" by Paramore -->
+  <audio id="paramore-audio" preload="auto" loop src="assets/audio/the-only-exception.mp3"></audio>
+
+  <!-- Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
